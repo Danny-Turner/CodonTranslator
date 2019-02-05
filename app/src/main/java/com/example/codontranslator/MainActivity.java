@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         Title1 = findViewById(R.id.Title1);
         Title2 = findViewById(R.id.Title2);
         Title3 = findViewById(R.id.Title3);
-        Title3 = findViewById(R.id.AminoAcid);
+        AminoAcid = findViewById(R.id.AminoAcid);
         ShowMore = findViewById(R.id.ShowMore);
 
         ArrayAdapter NucleotideOneAdapter = new ArrayAdapter<Nucleotide>;
