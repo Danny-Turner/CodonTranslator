@@ -1,15 +1,13 @@
 package com.example.codontranslator;
 
-enum AminoAcidName {
-    Valine, Leucine, Isoleucine, Alanine, Arginine, Glutamine, Lysine,
-    AsparticAcid, GlutamicAcid, Proline, Cysteine, Threonine, Methionine,
-    Histidine, Phenylalanine, Tyrosine, Tryptophan, Asparagine, Glycine,
-    Serine, STOP;
+enum AminoAcidSLC {
+    I, L, V, F, M, C, A, G, P, T, S,
+    Y, W, Q, N, H, E, D, K, R, Stop;
 }
 
 public class AminoAcid {
-    AminoAcidName name;
-    char oneLetter;
+    String name;
+    AminoAcidSLC singleLetter;
     String threeLetter;
 
 

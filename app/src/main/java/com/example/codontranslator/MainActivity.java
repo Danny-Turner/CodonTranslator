@@ -2,6 +2,8 @@ package com.example.codontranslator;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -28,13 +30,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public ArrayList<Nucleotide> nucleotides = new ArrayList<Nucleotide>();
-    nucleotides.add(A);
-
-
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +45,25 @@ public class MainActivity extends AppCompatActivity {
         AminoAcid = findViewById(R.id.AminoAcid);
         ShowMore = findViewById(R.id.ShowMore);
 
-        ArrayAdapter NucleotideOneAdapter = new ArrayAdapter<Nucleotide>;
+        ArrayAdapter<Nucleotide> NucleotideOneAdapter1 = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, Nucleotide.values());
+        Nucleotide1.setAdapter(NucleotideOneAdapter1);
 
-        NucleotideOneAdapter.setAdapter(new ArrayAdapter<Nucleotide>(this,android.R.layout.simple_list_item_1, Nucleotide.values()));
+        ArrayAdapter<Nucleotide> NucleotideOneAdapter2 = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, Nucleotide.values());
+        Nucleotide2.setAdapter(NucleotideOneAdapter2);
 
+        ArrayAdapter<Nucleotide> NucleotideOneAdapter3 = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, Nucleotide.values());
+        Nucleotide3.setAdapter(NucleotideOneAdapter3);
+
+        Nucleotide1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 }
