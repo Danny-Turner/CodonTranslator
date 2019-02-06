@@ -9,7 +9,9 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 // Dan Turner
 // CSCI 352
@@ -27,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView Title3;
     private TextView AminoAcid;
     private Button ShowMore;
-
-
-    public ArrayList<Nucleotide> nucleotides = new ArrayList<Nucleotide>();
+    private int i;
+    private Hashtable<Codon,AminoAcid> codonLookup = new Hashtable<Codon,AminoAcid>();
+    //codonLookup.put(new Codon(Nucleotide.A,Nucleotide.T,Nucleotide.T),new AminoAcid("Isoleucine",AminoAcidSLC.I,"Ile"));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,24 +47,31 @@ public class MainActivity extends AppCompatActivity {
         AminoAcid = findViewById(R.id.AminoAcid);
         ShowMore = findViewById(R.id.ShowMore);
 
-        ArrayAdapter<Nucleotide> NucleotideOneAdapter1 = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, Nucleotide.values());
+        ArrayAdapter<Nucleotide> NucleotideOneAdapter1 =
+                new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, Nucleotide.values());
         Nucleotide1.setAdapter(NucleotideOneAdapter1);
 
-        ArrayAdapter<Nucleotide> NucleotideOneAdapter2 = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, Nucleotide.values());
+        ArrayAdapter<Nucleotide> NucleotideOneAdapter2 =
+                new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, Nucleotide.values());
         Nucleotide2.setAdapter(NucleotideOneAdapter2);
 
-        ArrayAdapter<Nucleotide> NucleotideOneAdapter3 = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, Nucleotide.values());
+        ArrayAdapter<Nucleotide> NucleotideOneAdapter3 =
+                new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, Nucleotide.values());
         Nucleotide3.setAdapter(NucleotideOneAdapter3);
 
+       //FileInputStream codonData = openFileInput("AminoAcidData.txt");
+
+        i = 0;
         Nucleotide1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                AminoAcid.setText("something"+i);
+                i++;
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
+                AminoAcid.setText("nothing");
             }
         });
     }

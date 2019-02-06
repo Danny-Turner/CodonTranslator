@@ -10,5 +10,22 @@ public class AminoAcid {
     AminoAcidSLC singleLetter;
     String threeLetter;
 
+    AminoAcid(String name, AminoAcidSLC singleLetter, String threeLetter){
+        this.name = name;
+        this.singleLetter = singleLetter;
+        this.threeLetter = threeLetter;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public AminoAcidSLC getSingleLetter() {
+        return singleLetter;
+    }
+
+    public String getThreeLetter() {
+        return threeLetter;
+    }
 
 }
