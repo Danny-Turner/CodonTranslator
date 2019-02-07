@@ -1,5 +1,6 @@
 package com.example.codontranslator;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -30,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView AminoAcid;
     private Button ShowMore;
     private int i;
-    private Hashtable<Codon,AminoAcid> codonLookup = new Hashtable<Codon,AminoAcid>();
-    //codonLookup.put(new Codon(Nucleotide.A,Nucleotide.T,Nucleotide.T),new AminoAcid("Isoleucine",AminoAcidSLC.I,"Ile"));
+    private Hashtable<Codon,AminoAcid> codonLookup = new Hashtable<>();
+    //codonLookup.put(Codon(Nucleotide.A,Nucleotide.T,Nucleotide.T), AminoAcid("Isoleucine",AminoAcidSLC.I,"Ile"));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,24 +49,32 @@ public class MainActivity extends AppCompatActivity {
         ShowMore = findViewById(R.id.ShowMore);
 
         ArrayAdapter<Nucleotide> NucleotideOneAdapter1 =
-                new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, Nucleotide.values());
+                new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Nucleotide.values());
         Nucleotide1.setAdapter(NucleotideOneAdapter1);
 
         ArrayAdapter<Nucleotide> NucleotideOneAdapter2 =
-                new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, Nucleotide.values());
+                new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Nucleotide.values());
         Nucleotide2.setAdapter(NucleotideOneAdapter2);
 
         ArrayAdapter<Nucleotide> NucleotideOneAdapter3 =
-                new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, Nucleotide.values());
+                new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Nucleotide.values());
         Nucleotide3.setAdapter(NucleotideOneAdapter3);
 
-       //FileInputStream codonData = openFileInput("AminoAcidData.txt");
+        //FileInputStream codonData = openFileInput("AminoAcidData.txt");
+        ShowMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent showMoreIntent = new Intent(MainActivity.this, ShowMoreActivity.class);
+                startActivity(showMoreIntent);
+
+            }
+        });
 
         i = 0;
         Nucleotide1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                AminoAcid.setText("something"+i);
+                AminoAcid.setText("something " + i);
                 i++;
             }
 
@@ -74,5 +83,32 @@ public class MainActivity extends AppCompatActivity {
                 AminoAcid.setText("nothing");
             }
         });
+
+        Nucleotide2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                AminoAcid.setText("something else " + i);
+                i++;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                AminoAcid.setText("nothing");
+            }
+        });
+
+        Nucleotide3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                AminoAcid.setText("something different " + i);
+                i++;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                AminoAcid.setText("nothing");
+            }
+        });
+
     }
 }
