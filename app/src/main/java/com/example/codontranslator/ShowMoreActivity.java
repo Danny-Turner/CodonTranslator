@@ -2,6 +2,7 @@ package com.example.codontranslator;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,7 +14,7 @@ public class ShowMoreActivity extends AppCompatActivity {
     private TextView ThreeLetterCode;
     private TextView SingleLetterCode;
     private TextView AminoAcidDetail;
-    private Button ReturnToMain;
+    private Button ReturnToMainButton;
     private ImageView AminoAcidImage;
 
 
@@ -29,18 +30,14 @@ public class ShowMoreActivity extends AppCompatActivity {
         ThreeLetterCode = findViewById(R.id.ThreeLetterCode);
         SingleLetterCode = findViewById(R.id.SingleLetterCode);
         AminoAcidDetail = findViewById(R.id.AminoAcidDetail);
-    //    ReturnToMain = findViewById(R.id.ReturnToMain);
-        AminoAcidImage = findViewById(R.id.AminoAcidImage);
-
- //      ReturnToMain.setOnClickListener(new View.OnClickListener() {
- //           @Override
-  //          public void onClick(View v) {
-   //             finish();
-   //         }
-   //     });
-
-
-
+        ReturnToMainButton = findViewById(R.id.ReturnToMainButton);
+        AminoAcidImage = findViewById(R.id.AminoAcidImageMore);
+        ReturnToMainButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 }

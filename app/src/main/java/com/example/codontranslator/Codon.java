@@ -24,5 +24,8 @@ public class Codon {
     public Nucleotide getNucleotide3() {
         return nucleotide3;
     }
+    public String toString(){
+        return nucleotide1.toString()+nucleotide2.toString()+nucleotide3.toString();
+    }
 
 }
