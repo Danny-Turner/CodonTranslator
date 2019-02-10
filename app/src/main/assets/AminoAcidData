@@ -1,0 +1,21 @@
+F,Phe,Phenylalanine,phenylalanine.png
+L,Leu,Leucine,leucine.png
+I,Ile,Isoleucine,isoleucine.png
+M,Met,Methionine,methionine.png
+V,Val,Valine,valine.png
+S,Ser,Serine,serine.png
+P,Pro,Proline,proline.png
+T,Thr,Threonine,threonine.png
+A,Ala,Alanine,alanine.png
+Y,Tyr,Tyrosine,tyrosine.png
+H,His,Histidine,histidine.png
+Q,Gln,Glutamine,glutamine.png
+N,Asn,Asparagine,asparagine.png
+K,Lys,Lysine,lysine.png
+D,Asp,Aspartic acid,aspartic_acid.png
+E,Glu,Glutamic acid,glutamic_acid.png
+C,Cys,Cysteine,cysteine.png
+W,Trp,Tryptophan,tryptophan.png
+R,Arg,Arginine,arginine.png
+G,Gly,Glycine,glycine.png
+Stop,Stop,Stop,stop.png

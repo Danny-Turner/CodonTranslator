@@ -9,11 +9,13 @@ public class AminoAcid {
     String name;
     AminoAcidSLC singleLetter;
     String threeLetter;
+    String image;
 
-    AminoAcid(String name, AminoAcidSLC singleLetter, String threeLetter){
-        this.name = name;
+    AminoAcid(AminoAcidSLC singleLetter, String threeLetter, String name, String image){
         this.singleLetter = singleLetter;
         this.threeLetter = threeLetter;
+        this.name = name;
+        this.image = image;
     }
 
     public String getName() {
@@ -27,5 +29,8 @@ public class AminoAcid {
     public String getThreeLetter() {
         return threeLetter;
     }
+
+    public String getImage() { return image; }
+
 
 }
