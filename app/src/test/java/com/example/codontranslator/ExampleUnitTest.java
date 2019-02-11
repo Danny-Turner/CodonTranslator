@@ -11,7 +11,19 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
     @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
+    public void placeholder() {
+        assertEquals(true,true);
     }
+
+ //   @Test
+ //   public void codon_TTT_toAminoAcidIsCorrect() {
+ //       Codon testCodon = new Codon(Nucleotide.T,Nucleotide.T,Nucleotide.T);
+ //       assertEquals("Phe", MainActivity.aminoAcidLookup.get(MainActivity.codonLookup.
+ //               get(testCodon.toString())).getThreeLetter());
+ //   }
+
+
+
+
+
 }

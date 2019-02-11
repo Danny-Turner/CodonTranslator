@@ -27,20 +27,17 @@ import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Spinner Nucleotide1;
-    private Spinner Nucleotide2;
-    private Spinner Nucleotide3;
-    private TextView Title1;
-    private TextView Title2;
-    private TextView Title3;
-    private TextView AminoAcid;
+    public Spinner Nucleotide1, Nucleotide2, Nucleotide3;
+    private TextView AminoAcidName;
     private Button ShowMore;
     private ImageView AminoAcidImageMain;
-    public Nucleotide nuc1,nuc2,nuc3;
-    private static Hashtable<String,AminoAcidSLC> codonLookup = new Hashtable<>();
-    private static Hashtable<AminoAcidSLC,AminoAcid> aminoAcidLookup = new Hashtable<>();
+    public static int imageid;
+    public static Nucleotide nuc1,nuc2,nuc3;
+    public static Hashtable<String,AminoAcidSLC> codonLookup = new Hashtable<>();
+    public static Hashtable<AminoAcidSLC,AminoAcid> aminoAcidLookup = new Hashtable<>();
 
-    public void loadCodonData() {
+
+    private void loadCodonData() {
         try {
             InputStream codonInput = getAssets().open("CodonData");
             Scanner input = new Scanner(codonInput);
@@ -57,36 +54,45 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             Log.e("MainActivity", "Could not read CodonData");
         }
-
     }
 
-    public void loadAminoAcidData() {
+
+    private void loadAminoAcidData() {
         try {
             InputStream AminoAcidInput = getAssets().open("AminoAcidData");
             Scanner input = new Scanner(AminoAcidInput);
-            Log.d("MainActivity", "reading acid file");
             while (input.hasNextLine()) {
                 String line = input.nextLine();
-                Log.i("MainActivity", "acid line: " + line);
                 String[] AminoAcidData = line.split(",");
                 AminoAcidSLC singleLetter = AminoAcidSLC.valueOf(AminoAcidData[0]);
                 String threeLetter = AminoAcidData[1];
                 String fullName = AminoAcidData[2];
                 String image = AminoAcidData[3];
-                aminoAcidLookup.put(singleLetter, new AminoAcid(singleLetter,threeLetter, fullName, image));
+                String hydrophobic = AminoAcidData[4];
+                String polar = AminoAcidData[5];
+                String description = AminoAcidData[6];
+                aminoAcidLookup.put(singleLetter, new AminoAcid(singleLetter,threeLetter, fullName,
+                        image, hydrophobic, polar, description));
             }
             input.close();
-            Log.i("MainActivity", "Done with acids");
         } catch (IOException e) {
             Log.e("MainActivity", "Could not read AminoAcidData");
         }
-
     }
 
-    public AminoAcid findAminoAcid(){
+
+    public static AminoAcid findAminoAcid(){
         Codon currentCodon = new Codon(nuc1,nuc2,nuc3);
         return aminoAcidLookup.get(codonLookup.get(currentCodon.toString()));
     }
+
+
+    void grabSpinnerValues() {
+        nuc1 = (Nucleotide) Nucleotide1.getSelectedItem();
+        nuc2 = (Nucleotide) Nucleotide2.getSelectedItem();
+        nuc3 = (Nucleotide) Nucleotide3.getSelectedItem();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,10 +102,7 @@ public class MainActivity extends AppCompatActivity {
         Nucleotide1 = findViewById(R.id.Nucleotide1);
         Nucleotide2 = findViewById(R.id.Nucleotide2);
         Nucleotide3 = findViewById(R.id.Nucleotide3);
-        Title1 = findViewById(R.id.Title1);
-        Title2 = findViewById(R.id.Title2);
-        Title3 = findViewById(R.id.Title3);
-        AminoAcid = findViewById(R.id.AminoAcid);
+        AminoAcidName = findViewById(R.id.AminoAcid);
         ShowMore = findViewById(R.id.ShowMore);
         AminoAcidImageMain = findViewById(R.id.AminoAcidImageMain);
 
@@ -124,34 +127,29 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent showMoreIntent = new Intent(MainActivity.this, ShowMoreActivity.class);
                 startActivity(showMoreIntent);
-
             }
         });
 
         grabSpinnerValues();
+
         for (Spinner Nucleotide: new Spinner[]{Nucleotide1, Nucleotide2, Nucleotide3}) {
             Nucleotide.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     grabSpinnerValues();
-                    int test = AminoAcidImageMain.getContext().getResources().getIdentifier(findAminoAcid().getImage(), "drawable", AminoAcidImageMain.getContext().getPackageName());
-                    AminoAcidImageMain.setImageResource(R.drawable.histidine);
-
-                    AminoAcid.setText(findAminoAcid().getName() );
+                    imageid = getResources().getIdentifier(findAminoAcid().getImage(),"drawable",MainActivity.this.getPackageName());
+                    Log.d("MainActivity", "image file name "+findAminoAcid().getImage());
+                    Log.d("MainActivity", "image file number "+imageid);
+                    AminoAcidImageMain.setImageResource(imageid);
+                    //AminoAcidImageMain.setImageResource(R.drawable.phenylalanine);
+                    AminoAcidName.setText(findAminoAcid().getName() );
                 }
-
                 @Override
                 public void onNothingSelected(AdapterView<?> parent) {
-                    AminoAcid.setText("Please Select Nucleotides");
-
+                    AminoAcidName.setText("Please Select Nucleotides");
                 }
             });
         }
     }
 
-    void grabSpinnerValues() {
-        nuc1 = (Nucleotide) Nucleotide1.getSelectedItem();
-        nuc2 = (Nucleotide) Nucleotide2.getSelectedItem();
-        nuc3 = (Nucleotide) Nucleotide3.getSelectedItem();
-    }
 }

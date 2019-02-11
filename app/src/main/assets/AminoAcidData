@@ -1,21 +1,21 @@
-F,Phe,Phenylalanine,phenylalanine.png
-L,Leu,Leucine,leucine.png
-I,Ile,Isoleucine,isoleucine.png
-M,Met,Methionine,methionine.png
-V,Val,Valine,valine.png
-S,Ser,Serine,serine.png
-P,Pro,Proline,proline.png
-T,Thr,Threonine,threonine.png
-A,Ala,Alanine,alanine.png
-Y,Tyr,Tyrosine,tyrosine.png
-H,His,Histidine,histidine.png
-Q,Gln,Glutamine,glutamine.png
-N,Asn,Asparagine,asparagine.png
-K,Lys,Lysine,lysine.png
-D,Asp,Aspartic acid,aspartic_acid.png
-E,Glu,Glutamic acid,glutamic_acid.png
-C,Cys,Cysteine,cysteine.png
-W,Trp,Tryptophan,tryptophan.png
-R,Arg,Arginine,arginine.png
-G,Gly,Glycine,glycine.png
-Stop,Stop,Stop,stop.png
+F,Phe,Phenylalanine,phenylalanine,yes,no,Phenylalanine
+L,Leu,Leucine,leucine,yes,no,Leucine
+I,Ile,Isoleucine,isoleucine,yes,no,Isoleucine
+M,Met,Methionine,methionine,yes,no,Methionine
+V,Val,Valine,valine,yes,no,Valine
+S,Ser,Serine,serine,no,yes,Serine
+P,Pro,Proline,proline,yes,no,Proline
+T,Thr,Threonine,threonine,no,yes,Threonine
+A,Ala,Alanine,alanine,yes,no,Alanine
+Y,Tyr,Tyrosine,tyrosine,no,yes,Tyrosine
+H,His,Histidine,histidine,no,yes,Histidine
+Q,Gln,Glutamine,glutamine,no,yes,Glutamine
+N,Asn,Asparagine,asparagine,no,yes,Asparagine
+K,Lys,Lysine,lysine,no,yes,Lysine
+D,Asp,Aspartic acid,aspartic_acid,no,yes,AsparticAcid
+E,Glu,Glutamic acid,glutamic_acid,no,yes,GlutamicAcid
+C,Cys,Cysteine,cysteine,yes,no,Cysteine
+W,Trp,Tryptophan,tryptophan,yes,no,Tryptophan
+R,Arg,Arginine,arginine,no,yes,Arginine
+G,Gly,Glycine,glycine,yes,no,Glycine
+Stop,Stop,Stop,stop,na,na,Stop

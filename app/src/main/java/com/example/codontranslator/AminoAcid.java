@@ -6,16 +6,18 @@ enum AminoAcidSLC {
 }
 
 public class AminoAcid {
-    String name;
     AminoAcidSLC singleLetter;
-    String threeLetter;
-    String image;
+    String name, threeLetter, image, hydrophobic, polar, description;
 
-    AminoAcid(AminoAcidSLC singleLetter, String threeLetter, String name, String image){
+    AminoAcid(AminoAcidSLC singleLetter, String threeLetter, String name,
+              String image, String hydrophobic, String polar, String description){
         this.singleLetter = singleLetter;
         this.threeLetter = threeLetter;
         this.name = name;
         this.image = image;
+        this.hydrophobic = hydrophobic;
+        this.polar = polar;
+        this.description = description;
     }
 
     public String getName() {
@@ -32,5 +34,10 @@ public class AminoAcid {
 
     public String getImage() { return image; }
 
+    public String getHydrophobic() { return hydrophobic; }
+
+    public String getPolar() { return polar; }
+
+    public String getDescription() { return description; }
 
 }
